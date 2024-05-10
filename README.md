@@ -30,4 +30,4 @@ parameters, such as learning rate = 1e-4, batch size = 8, can be adjusted accord
 
 ### Test Network
 Run DeepSM_Test.py if you would like to test the trained model on your data. We uploaded the trained Deep-SM model to 
-Google Drive, and the shared link can be seen in 'Deep-SM Google Drive (Model and Data).txt'.
+Google Drive, and the shared link can be seen in 'Deep-SM Google Drive.txt'.
