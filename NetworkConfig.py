@@ -13,20 +13,14 @@ class Config:
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     if torch.cuda.is_available():
         num_workers = 8 * len(gpus)
-        # num_workers = 2
-        # train_batch_size = 1
-        # valid_batch_size = 2 * train_batch_size
-        # test_batch_size = 2 * train_batch_size
-        train_batch_size = 8
-        valid_batch_size = 8
-        test_batch_size = 8
+        train_batch_size = 32
+        valid_batch_size = 32
+        test_batch_size = 32
     else:
         num_workers = 0
         train_batch_size = 1
         valid_batch_size = 1
         test_batch_size = 1
-        # valid_batch_size = 2 * train_batch_size
-        # test_batch_size = 2 * train_batch_size
 
 
     num_frames_input = 4
@@ -37,31 +31,6 @@ class Config:
     draw = 10
 
     epochs = 1000
-
-    encoder = [('conv', 'leaky', 1, 16, 3, 1, 2),
-             ('convlstm', '', 16, 16, 3, 1, 1),
-             ('conv', 'leaky', 16, 32, 3, 1, 2),
-             ('convlstm', '', 32, 32, 3, 1, 1),
-             ('conv', 'leaky', 32, 64, 3, 1, 2),
-             ('convlstm', '', 64, 64, 3, 1, 1),
-             ('conv', 'leaky', 64, 128, 3, 1, 2),
-             ('convlstm', '', 128, 128, 3, 1, 1),
-             ('conv', 'leaky', 128, 256, 3, 1, 2),
-             ('convlstm', '', 256, 256, 3, 1, 1)]
-    decoder = [('deconv', 'leaky', 256, 128, 4, 1, 2),
-               ('convlstm', '', 256, 128, 3, 1, 1),
-               ('deconv', 'leaky', 128, 64, 4, 1, 2),
-               ('convlstm', '', 128, 64, 3, 1, 1),
-               ('deconv', 'leaky', 64, 32, 4, 1, 2),
-               ('convlstm', '', 64, 32, 3, 1, 1),
-               ('deconv', 'leaky', 32, 16, 4, 1, 2),
-               ('convlstm', '', 32, 16, 3, 1, 1),
-               ('deconv', 'leaky', 16, 16, 4, 1, 2),
-               ('convlstm', '', 17, 16, 3, 1, 1),
-               ('conv', 'sigmoid', 16, 1, 1, 0, 1)]
-
-
-
 
     data_dir = os.path.join(root_dir, 'Data')
     output_dir = os.path.join(root_dir, 'output')
