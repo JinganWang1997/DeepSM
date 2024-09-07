@@ -99,7 +99,7 @@ def main():
 
     criterion = torch.nn.MSELoss().to(DeepSM_config.device)
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=50, gamma=0.05, last_epoch=-1)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=50, gamma=0.5, last_epoch=-1)
 
 
     train_dataset = TrainDataset()
